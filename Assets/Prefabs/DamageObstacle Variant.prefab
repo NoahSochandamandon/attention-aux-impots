@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Damages
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3954130545569895389, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4122587926525220398, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
       propertyPath: m_Name
       value: DamageObstacle Variant
@@ -56,8 +60,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3954130545569895389, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4122587926525220398, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 371195129616005702}
   m_SourcePrefab: {fileID: 100100000, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
+--- !u!1 &1546758841200102717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4122587926525220398, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
+  m_PrefabInstance: {fileID: 3188952163803257619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &371195129616005702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546758841200102717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be01fe82e27ea14ca2836e1e2d33b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageObstacle
+  Speed: 15
+  DestroyDistance: -15
+  Damages: 2

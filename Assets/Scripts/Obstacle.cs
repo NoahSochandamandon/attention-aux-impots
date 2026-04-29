@@ -3,23 +3,28 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField]
-    private float Speed;
+    protected float Speed;
 
     [SerializeField]
-    private float DestroyDistance;
+    protected float DestroyDistance;
 
     [SerializeField]
-    private int Damages;
+    protected int Damages;
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         transform.position += new Vector3(0, 0, -Speed * Time.deltaTime);
 
-        if(transform.position.z < DestroyDistance)
+        FinCourse();
+    }
+
+    protected void FinCourse()
+    {
+        if (transform.position.z < DestroyDistance)
         {
             Destroy(gameObject);
         }
+
     }
 
     public int Explode()

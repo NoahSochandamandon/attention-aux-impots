@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
 
     private float _nextSpawn;
     private int _spawnCount = 0;
+
+    [SerializeField]
     private const int DAMAGE_TO_BONUS_RATIO = 9;
 
     // Update is called once per frame
@@ -31,7 +33,6 @@ public class Spawner : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        // Ratio: 9 damage obstacles for 1 bonus obstacle
         Obstacle prefab;
         if (_spawnCount % (DAMAGE_TO_BONUS_RATIO + 1) == DAMAGE_TO_BONUS_RATIO)
         {
