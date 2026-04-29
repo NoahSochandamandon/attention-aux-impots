@@ -257,7 +257,6 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204556491}
   m_Enabled: 1
-  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1527,9 +1526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbee193fa382ab4a966316c75b82d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  DamageObstacle: {fileID: 1918124220618098894, guid: 7e7ae242b7d59174088b3a6cf2ea1382, type: 3}
+  DamageObstacle: {fileID: 371195129616005702, guid: 7e7ae242b7d59174088b3a6cf2ea1382, type: 3}
   BonusObstacles:
-  - {fileID: 6269375195679268779, guid: c8fd005e5aae4044098fed4be1798392, type: 3}
+  - {fileID: 1258791345176787626, guid: c8fd005e5aae4044098fed4be1798392, type: 3}
   SpawnBounds: {x: 5, y: 3}
   SpawnDelay: {x: 0.2, y: 1}
 --- !u!1 &1563318551
