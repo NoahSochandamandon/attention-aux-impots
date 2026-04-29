@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Rigidbody Body;
 
+    [SerializeField]
+    private Animator SpriteAnimator;
+
     private Vector2 _movement;
 
     [SerializeField]
@@ -31,25 +34,42 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_movement.magnitude > 0)
+        if (_movement.magnitude > 0)
         {
-            Body.AddForce((Vector3)_movement * Speed);
-        } else
+
+            Vector3 direction = new Vector3(_movement.x, _movement.y, 0);
+
+            Body.AddForce(direction * Speed);
+
+            if (SpriteAnimator != null)
+                SpriteAnimator.SetBool("isWalking", true);
+
+            if (_movement.x != 0)
+            {
+                SpriteAnimator.GetComponent<SpriteRenderer>().flipX = (_movement.x > 0);
+            }
+        }
+        else
         {
             Body.linearVelocity *= SpeedDecrease;
+
+            if (SpriteAnimator != null)
+                SpriteAnimator.SetBool("isWalking", false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Obstacle o = other.GetComponent<Obstacle>();
-        if(o != null)
+        if (o != null)
         {
             int damages = o.Explode();
             HP -= damages;
             HPSlider.value = HP;
             if (HP <= 0)
             {
+                if (SpriteAnimator != null) SpriteAnimator.SetBool("isWalking", false);
+
                 enabled = false;
                 GameOverScreen.SetActive(true);
             }
