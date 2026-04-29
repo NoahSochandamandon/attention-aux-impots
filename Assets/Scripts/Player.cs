@@ -61,11 +61,27 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Obstacle o = other.GetComponent<Obstacle>();
-        if (o is DamageObstacle)
+        if (o != null)
         {
             int damages = o.Explode();
-            HP -= damages;
-            HPSlider.value = HP;
+            if (o is DamageObstacle)
+            {
+                HP -= damages;
+                HPSlider.value = HP;
+            }
+            else if (o is HealObstacle)
+            {
+                if (HP < 10)
+                {
+                    HP += -damages;
+                    HPSlider.value = HP;
+                }
+            }
+            else if (o is SpeedObstacle)
+            {
+                Speed *= 1.5f;
+            }
+
             isDead();
         }
     }

@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour
 
     }
 
-    public int Explode()
+    public virtual int Explode()
     {
         Destroy(gameObject);
         return Damages;

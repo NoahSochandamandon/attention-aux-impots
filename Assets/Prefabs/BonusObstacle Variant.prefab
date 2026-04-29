@@ -88,4 +88,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BonusObstacle
   Speed: 15
   DestroyDistance: -15
-  Damages: -1
+  Damages: 0
