@@ -61,11 +61,21 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Obstacle o = other.GetComponent<Obstacle>();
-        if (o != null)
+        if (o is DamageObstacle)
         {
             int damages = o.Explode();
             HP -= damages;
             HPSlider.value = HP;
+            isDead();
+        }
+    }
+
+    private void isDead()
+    {
+        if (HP <= 0)
+        {
+            enabled = false;
+            GameOverScreen.SetActive(true);
             if (HP <= 0)
             {
                 if (SpriteAnimator != null) SpriteAnimator.SetBool("isWalking", false);
