@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private float Speed = 10f;
+
+    private float _baseSpeed;
 
     [SerializeField]
     private float SpeedDecrease = 0.9f;
@@ -26,6 +29,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject GameOverScreen;
+
+    private void Awake()
+    {
+        _baseSpeed = Speed;
+    }
 
     void OnMove(InputValue value)
     {
@@ -60,30 +68,24 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Obstacle o = other.GetComponent<Obstacle>();
-        if (o != null)
-        {
-            int damages = o.Explode();
-            if (o is DamageObstacle)
-            {
-                HP -= damages;
-                HPSlider.value = HP;
-            }
-            else if (o is HealObstacle)
-            {
-                if (HP < 10)
-                {
-                    HP += -damages;
-                    HPSlider.value = HP;
-                }
-            }
-            else if (o is SpeedObstacle)
-            {
-                Speed *= 1.5f;
-            }
+        Obstacle obstacle = other.GetComponent<Obstacle>();
 
-            isDead();
+        if (obstacle != null)
+        {
+            obstacle.ApplyEffect(this);
         }
+    }
+
+    public void ModifyHP(int amount)
+    {
+        HP += amount;
+        HPSlider.value = HP;
+        isDead();
+    }
+
+    public void ApplySpeedBoost(float mult, float dur)
+    {
+        StartCoroutine(SpeedBoostRoutine(mult, dur));
     }
 
     private void isDead()
@@ -100,5 +102,14 @@ public class Player : MonoBehaviour
                 GameOverScreen.SetActive(true);
             }
         }
+    }
+
+    private IEnumerator SpeedBoostRoutine(float mult, float dur)
+    {
+        Speed = Speed * mult;
+
+        yield return new WaitForSeconds(dur);
+
+        Speed = _baseSpeed;
     }
 }
