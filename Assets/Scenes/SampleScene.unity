@@ -1528,9 +1528,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   DamageObstacle: {fileID: 371195129616005702, guid: 7e7ae242b7d59174088b3a6cf2ea1382, type: 3}
   BonusObstacles:
-  - {fileID: 1258791345176787626, guid: c8fd005e5aae4044098fed4be1798392, type: 3}
+  - {fileID: 9011337939631091415, guid: c2b601c54aa60a449af750b372249029, type: 3}
+  - {fileID: 3819851344418277208, guid: 936e1f4a433c12d449700429f20ca029, type: 3}
   SpawnBounds: {x: 5, y: 3}
   SpawnDelay: {x: 0.2, y: 1}
+  MuscleTransform: {fileID: 0}
 --- !u!1 &1563318551
 GameObject:
   m_ObjectHideFlags: 0

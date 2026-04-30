@@ -1,15 +1,12 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public abstract class Obstacle : MonoBehaviour
 {
     [SerializeField]
     protected float Speed;
 
     [SerializeField]
     protected float DestroyDistance;
-
-    [SerializeField]
-    protected int Damages;
 
     protected virtual void Update()
     {
@@ -27,9 +24,5 @@ public class Obstacle : MonoBehaviour
 
     }
 
-    public virtual int Explode()
-    {
-        Destroy(gameObject);
-        return Damages;
-    }
+    public abstract void ApplyEffect(Player player);
 }

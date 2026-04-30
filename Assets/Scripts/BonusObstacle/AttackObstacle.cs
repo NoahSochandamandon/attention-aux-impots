@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackObstacle : BonusObstacle
+public class AttackObstacle : MonoBehaviour
 {
 
 }

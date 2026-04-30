@@ -64,28 +64,5 @@ PrefabInstance:
     - {fileID: 3954130545569895389, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4122587926525220398, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1258791345176787626}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
---- !u!1 &6406635101827177048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4122587926525220398, guid: 045725f9f2d8b6a43addd26477891438, type: 3}
-  m_PrefabInstance: {fileID: 7052266816490212470}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1258791345176787626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6406635101827177048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24873e94d6e7d8240b4b068bcfb42f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BonusObstacle
-  Speed: 15
-  DestroyDistance: -15
-  Damages: 0
