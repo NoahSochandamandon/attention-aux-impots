@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private float Speed = 10f;
+
+    private float _baseSpeed;
 
     [SerializeField]
     private float SpeedDecrease = 0.9f;
@@ -21,11 +24,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int HP = 10;
 
+    private int _baseHP;
+
     [SerializeField]
     private Slider HPSlider;
 
     [SerializeField]
     private GameObject GameOverScreen;
+
+    private void Awake()
+    {
+        _baseSpeed = Speed;
+        _baseHP = HP;
+    }
 
     void OnMove(InputValue value)
     {
@@ -60,14 +71,26 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Obstacle o = other.GetComponent<Obstacle>();
-        if (o is DamageObstacle)
+        Obstacle obstacle = other.GetComponent<Obstacle>();
+
+        if (obstacle != null)
         {
-            int damages = o.Explode();
-            HP -= damages;
-            HPSlider.value = HP;
-            isDead();
+            obstacle.ApplyEffect(this);
         }
+    }
+
+    public void ModifyHP(int amount)
+    {
+        if (HP + amount > _baseHP) return;
+
+        HP += amount;
+        HPSlider.value = HP;
+        isDead();
+    }
+
+    public void ApplySpeedBoost(float mult, float dur)
+    {
+        StartCoroutine(SpeedBoostRoutine(mult, dur));
     }
 
     private void isDead()
@@ -84,5 +107,14 @@ public class Player : MonoBehaviour
                 GameOverScreen.SetActive(true);
             }
         }
+    }
+
+    private IEnumerator SpeedBoostRoutine(float mult, float dur)
+    {
+        Speed = Speed * mult;
+
+        yield return new WaitForSeconds(dur);
+
+        Speed = _baseSpeed;
     }
 }

@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class DamageObstacle : Obstacle
 {
-  private void Awake()
-  {
-    Damages = 2;
-  }
 
-  protected override void Update()
-  {
-    base.Update();
-  }
+  [SerializeField] private int damages = 1;
 
+  public override void ApplyEffect(Player player)
+  {
+    player.ModifyHP(-damages);
+    Destroy(gameObject);
+  }
 }

@@ -1,16 +1,7 @@
 using UnityEngine;
 
-public class BonusObstacle : Obstacle
+public abstract class BonusObstacle : Obstacle
 {
-  private void Awake()
-  {
-    Damages = 0;
-  }
+  public override abstract void ApplyEffect(Player player);
 
-  protected override void Update()
-  {
-
-    base.Update();
-
-  }
 }

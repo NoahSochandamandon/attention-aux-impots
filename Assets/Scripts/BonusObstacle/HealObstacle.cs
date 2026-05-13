@@ -3,13 +3,12 @@ using UnityEngine;
 public class HealObstacle : BonusObstacle
 {
 
-  private void Awake()
+  [SerializeField] private int heal = 1;
+
+  public override void ApplyEffect(Player player)
   {
-    Damages = -1;
+    player.ModifyHP(heal);
+    Destroy(gameObject);
   }
 
-  protected override void Update()
-  {
-    base.Update();
-  }
 }

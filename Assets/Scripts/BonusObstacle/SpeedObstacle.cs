@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class SpeedObstacle : BonusObstacle
 {
+  [SerializeField] private float multiplier = 2f;
+  [SerializeField] private float duration = 10f;
+
   private void Awake()
   {
-    Speed = 1.5f;
+    Speed *= 1.5f;
   }
 
-  protected override void Update()
+  public override void ApplyEffect(Player player)
   {
-    base.Update();
+    player.ApplySpeedBoost(multiplier, duration);
+    Destroy(gameObject);
   }
 }
