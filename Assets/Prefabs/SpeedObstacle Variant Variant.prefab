@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1084374586366202253, guid: c2b601c54aa60a449af750b372249029, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084374586366202253, guid: c2b601c54aa60a449af750b372249029, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb9c8c0e516fa4141bc3db9c06e94cee, type: 2}
+    - target: {fileID: 1084374586366202253, guid: c2b601c54aa60a449af750b372249029, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c29a898b1fc8db343af6c3c2e225de73, type: 2}
     - target: {fileID: 2530313825157973062, guid: c2b601c54aa60a449af750b372249029, type: 3}
       propertyPath: m_Name
       value: SpeedObstacle Variant Variant
@@ -80,5 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpeedObstacle
   Speed: 15
   DestroyDistance: -15
-  Damages: 0
-  SpeedMultiplier: 1.5
+  multiplier: 2
+  duration: 10

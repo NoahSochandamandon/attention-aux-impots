@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int HP = 10;
 
+    private int _baseHP;
+
     [SerializeField]
     private Slider HPSlider;
 
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _baseSpeed = Speed;
+        _baseHP = HP;
     }
 
     void OnMove(InputValue value)
@@ -78,6 +81,8 @@ public class Player : MonoBehaviour
 
     public void ModifyHP(int amount)
     {
+        if (HP + amount > _baseHP) return;
+
         HP += amount;
         HPSlider.value = HP;
         isDead();
