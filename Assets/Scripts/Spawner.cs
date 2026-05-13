@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+
+    [SerializeField]
+    private int SpawnerHeal = 5;
+
+    [SerializeField]
+
+    private GameObject GameOverScreen;
+
+
     [SerializeField]
     private Obstacle DamageObstacle;
 
@@ -64,6 +73,29 @@ public class Spawner : MonoBehaviour
         o.transform.localPosition = spawnLocalPos;
 
         _spawnCount++;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        SpawnerHeal -= damage;
+        Debug.Log("Aïe ! HP du Spawner restants : " + SpawnerHeal);
+
+        if (SpawnerHeal <= 0)
+        {
+            IsDead();
+        }
+    }
+
+    private void IsDead()
+    {
+        enabled = false;
+        GameOverScreen.SetActive(true);
+        if (SpawnerHeal <= 0)
+        {
+            enabled = false;
+            GameOverScreen.SetActive(true);
+        }
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
